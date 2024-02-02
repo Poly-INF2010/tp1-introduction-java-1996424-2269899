@@ -86,8 +86,8 @@ public class Point2d extends AbstractPoint {
      */
     public Point2d rotate(Double angle) {
 
-        Double Peojection_x =cos(angle) ;
-        Double Peojection_y =sin(angle) ;
+        double Peojection_x =cos(angle) ;
+        double Peojection_y =sin(angle) ;
         Double [] [] matrixFinaleAngle={{Peojection_x, (-Peojection_y)},{Peojection_y, Peojection_x}};
         PointOperator.rotate(vector,matrixFinaleAngle);
 

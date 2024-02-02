@@ -2,7 +2,9 @@ package Interface;
 
 import Point.Point2d;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class Transform implements Rotate, Translate{
     /** TODO
@@ -13,11 +15,16 @@ public class Transform implements Rotate, Translate{
      * @return rotated collection
      * */
     public Collection<Point2d> rotate(Collection<Point2d> coords, Double angle) {
-        Collection<Point2d> coordsRotated = null;
-        for (Point2d point : coords){
-            coordsRotated.add(point.rotate(angle));
+        Iterator<Point2d> iterator = coords.iterator();
+        Collection<Point2d> rotatedCoords = new ArrayList<>();
+
+        while (iterator.hasNext()) {
+            Point2d point = iterator.next();
+            Point2d rotatedPoint = point.rotate(angle);
+            rotatedCoords.add(rotatedPoint);
         }
-        return coordsRotated;
+
+        return rotatedCoords;
     }
 
     /** TODO
@@ -27,9 +34,12 @@ public class Transform implements Rotate, Translate{
      * @return translated coords
      * */
     public Collection<Point2d> translate(Collection<Point2d> coords, Point2d translateVector) { //utiliser la fonction qui se trouve dans point2d!!!!
-        Collection<Point2d> coordsTranslated = null;
-        for (Point2d point : coords){
-            coordsTranslated.add(point.translate(translateVector));
+        Iterator<Point2d> iterator = coords.iterator();
+        Collection<Point2d> coordsTranslated = new ArrayList<>();
+        while (iterator.hasNext()){
+            Point2d point = iterator.next();
+            Point2d translatedPoint = point.translate(translateVector);
+            coordsTranslated.add(translatedPoint);
         }
         return coordsTranslated;
     }

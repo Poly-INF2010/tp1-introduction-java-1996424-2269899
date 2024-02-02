@@ -57,6 +57,7 @@ public final class PointOperator {
      */
     public static void add(Double[] vector, Double adder) {
         for (int i = 0; i < vector.length; i++) {
-            vector[i] += adder;}}
-
+            vector[i] += adder;
+        }
+    }
 }
