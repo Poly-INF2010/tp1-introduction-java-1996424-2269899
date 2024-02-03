@@ -148,22 +148,10 @@ public class BaseShape extends Transform implements Cloneable {
      */
     public Point2d getMaxCoord() {
         Point2d coordMaximum = new Point2d(-Double.MAX_VALUE, -Double.MAX_VALUE);
-        Point2d coordX = new Point2d(0.0, 0.0);
-        Point2d coordY = new Point2d(0.0, 0.0);
         for (Point2d point: coords){
-              if(point.X() > coordMaximum.X() ) {
-                  coordX = point;
+              if(point.X() > coordMaximum.X() || point.Y() > coordMaximum.Y()) {
+                 coordMaximum = point;
               }
-              if (point.Y() > coordMaximum.Y()){
-                  coordY = point;
-              }
-        }
-        double additionCoordY = coordY.Y() + coordY.X();
-        double additionCoordX = coordX.Y() + coordX.X();
-        if (additionCoordX > additionCoordY){
-            coordMaximum = coordX;
-        }else{
-            coordMaximum = coordY;
         }
         return coordMaximum;
     }
@@ -192,7 +180,13 @@ public class BaseShape extends Transform implements Cloneable {
      * @return 2D point containing the minimum X and Y coordinate of the shape
      */
     public Point2d getMinCoord() {
-        return null;
+        Point2d coordMinimum = new Point2d(Double.MAX_VALUE, Double.MAX_VALUE);
+        for (Point2d point: coords){
+            if(point.X() < coordMinimum.X() || point.Y() < coordMinimum.Y()) {
+                coordMinimum = point;
+            }
+        }
+        return coordMinimum;
     }
 
     /** TODO
