@@ -11,7 +11,21 @@ public class Rectangle extends BaseShape {
      * @param height Height of the rectangle
      */
     public Rectangle(Double width, Double height) {
+        super();
+        Collection<Point2d> points = getCoords();
+        int numXPoints = (int) (width/0.5);
+        int numYPoints = (int) (height/0.5);
 
+        double firstX = -width / 2.0 + 0.5 / 2.0;
+        double firstY = -height/2.0 + 0.5/2.0;
+        for (int i = 0; i<numXPoints; i++){
+            for (int j = 0; j<numYPoints; j++){
+                double x = firstX + i * 0.5;
+                double y = firstY + j * 0.5;
+                points.add(new Point2d(x,y));
+            }
+        }
+        addAll(points);
     }
 
     /** TODO
@@ -19,7 +33,23 @@ public class Rectangle extends BaseShape {
      * @param dimensions 2D point containing the width and height of the rectangle
      */
     public Rectangle(Point2d dimensions) {
+        super();
+        Collection<Point2d> points = getCoords();
 
+        int numXPoints = (int) (dimensions.X() / 0.5);
+        int numYPoints = (int) (dimensions.Y() / 0.5);
+
+        double firstX = -dimensions.X() / 2.0 + 0.5 / 2.0;
+        double firstY = -dimensions.Y() / 2.0 + 0.5 / 2.0;
+
+        for (int i = 0; i < numXPoints; i++) {
+            for (int j = 0; j < numYPoints; j++) {
+                double x = firstX + i * 0.5;
+                double y = firstY + j * 0.5;
+                points.add(new Point2d(x, y));
+            }
+        }
+        addAll(points);
     }
 
     /**
@@ -27,7 +57,7 @@ public class Rectangle extends BaseShape {
      * @param coords The collection of 2D points
      */
     private Rectangle(Collection<Point2d> coords) {
-
+        super(coords);
     }
 
     /** TODO
@@ -35,6 +65,6 @@ public class Rectangle extends BaseShape {
      */
     @Override
     public Rectangle clone() {
-        return null;
+        return new Rectangle(getCoords().stream().map(Point2d::clone).toList());
     }
 }
