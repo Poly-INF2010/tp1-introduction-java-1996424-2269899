@@ -29,7 +29,7 @@ public final class LetterFactory {
         rectangle1.rotate(rectangle1.getCoords(), Math.toRadians(angleRotation));
         rectangle1.translate(rectangle1.getCoords(), new Point2d(-halfMaxWidth, 0.0));
         Rectangle rectangle2 = new Rectangle(maxWidth, halfStripeThickness);
-        rectangle2.translate(rectangle2.getCoords(), new Point2d(-12.0, 20.0)); //comment as-tu trouve ces valeurs?
+        rectangle2.translate(rectangle2.getCoords(), new Point2d(-12.0, 20.0));
         BaseShape A = new BaseShape();
         return A.add(rectangle).add(rectangle2).add(rectangle1);
     }
