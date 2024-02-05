@@ -29,7 +29,8 @@ public final class LetterFactory {
         rectangle1.rotate(rectangle1.getCoords(), Math.toRadians(angleRotation));
         rectangle1.translate(rectangle1.getCoords(), new Point2d(-halfMaxWidth, 0.0));
         Rectangle rectangle2 = new Rectangle(maxWidth, halfStripeThickness);
-        rectangle2.translate(rectangle2.getCoords(), new Point2d(-12.0, 20.0));
+        Point2d translatingVector = new Point2d(-12.0, 20.0);
+        rectangle2.translate(rectangle2.getCoords(), translatingVector);
         BaseShape A = new BaseShape();
         return A.add(rectangle).add(rectangle2).add(rectangle1);
     }
@@ -59,12 +60,12 @@ public final class LetterFactory {
      * @return BaseShape containing the letter C
      */
     public static BaseShape create_C() {
-        Ellipse grosEllipse = new Ellipse(maxWidth, maxHeight);
-        Ellipse petitEllipse = new Ellipse(halfMaxWidth, halfMaxHeight);
-        Rectangle rectangle = new Rectangle(maxWidth, halfMaxHeight);
-        rectangle.translate(rectangle.getCoords(), new Point2d(halfMaxWidth / 2, 0.0));
+        Ellipse bigEllipse = new Ellipse(maxWidth, maxHeight);
+        Ellipse smallEllipse = new Ellipse(halfMaxWidth, halfMaxHeight);
+        Rectangle opening = new Rectangle(maxWidth, halfMaxHeight);
+        opening.translate(opening.getCoords(), new Point2d(halfMaxWidth / 2, 0.0));
         BaseShape C = new BaseShape();
-        return C.add(grosEllipse).remove(petitEllipse).remove(rectangle);
+        return C.add(bigEllipse).remove(smallEllipse).remove(opening);
     }
 
     /**
@@ -73,15 +74,15 @@ public final class LetterFactory {
      * @return BaseShape containing the letter E
      */
     public static BaseShape create_E() {
-        Rectangle vertical = new Rectangle(halfStripeThickness, maxHeight);
-        Rectangle horizontale1 = new Rectangle(maxWidth, halfStripeThickness);
-        Rectangle horizontale2 = horizontale1.clone();
-        Rectangle horizontale3 = horizontale1.clone();
-        horizontale1.translate(horizontale1.getCoords(), new Point2d(halfMaxWidth, halfMaxHeight - halfStripeThickness / 2));
-        horizontale2.translate(horizontale2.getCoords(), new Point2d(halfMaxWidth, -halfMaxHeight + halfStripeThickness / 2));
-        horizontale3.translate(horizontale3.getCoords(), new Point2d(halfMaxWidth, 0.0));
+        Rectangle verticalRectangle = new Rectangle(halfStripeThickness, maxHeight);
+        Rectangle horizontalRectangle1 = new Rectangle(maxWidth, halfStripeThickness);
+        Rectangle horizontalRectangle2 = horizontalRectangle1.clone();
+        Rectangle horizontalRectangle3 = horizontalRectangle1.clone();
+        horizontalRectangle1.translate(horizontalRectangle1.getCoords(), new Point2d(halfMaxWidth, halfMaxHeight - halfStripeThickness / 2));
+        horizontalRectangle2.translate(horizontalRectangle2.getCoords(), new Point2d(halfMaxWidth, -halfMaxHeight + halfStripeThickness / 2));
+        horizontalRectangle3.translate(horizontalRectangle3.getCoords(), new Point2d(halfMaxWidth, 0.0));
         BaseShape E = new BaseShape();
-        return E.add(vertical).add(horizontale1).add(horizontale2).add(horizontale3);
+        return E.add(verticalRectangle).add(horizontalRectangle1).add(horizontalRectangle2).add(horizontalRectangle3);
 
     }
 
@@ -91,13 +92,13 @@ public final class LetterFactory {
      * @return BaseShape containing the letter H
      */
     public static BaseShape create_H() {
-        Rectangle rectangle = new Rectangle(halfStripeThickness, maxHeight);
-        BaseShape newRect = new BaseShape(rectangle.translate(rectangle.getCoords(), new Point2d(-halfMaxWidth, 0.0)));
-        Rectangle rectangle1 = new Rectangle(halfStripeThickness, maxHeight);
-        BaseShape newRect1 = new BaseShape(rectangle1.translate(rectangle1.getCoords(), new Point2d(halfMaxWidth, 0.0)));
-        Rectangle rectangle2 = new Rectangle(maxWidth, halfStripeThickness);
+        Rectangle verticalRectangle = new Rectangle(halfStripeThickness, maxHeight);
+        BaseShape newRect = new BaseShape(verticalRectangle.translate(verticalRectangle.getCoords(), new Point2d(-halfMaxWidth, 0.0)));
+        Rectangle verticalRectangle2 = new Rectangle(halfStripeThickness, maxHeight);
+        BaseShape newRect1 = new BaseShape(verticalRectangle2.translate(verticalRectangle2.getCoords(), new Point2d(halfMaxWidth, 0.0)));
+        Rectangle horizontalRectangle = new Rectangle(maxWidth, halfStripeThickness);
         BaseShape H = new BaseShape();
-        return H.add(newRect).add(rectangle2).add(newRect1);
+        return H.add(newRect).add(horizontalRectangle).add(newRect1);
     }
 
     /**
@@ -107,14 +108,14 @@ public final class LetterFactory {
      */
     public static BaseShape create_N() {
         double angleRotation = 22.0;
-        Rectangle rectangle = new Rectangle(halfStripeThickness, maxHeight);
-        Rectangle rectangle1 = new Rectangle(halfStripeThickness, maxHeight);
-        rectangle1.translate(rectangle1.getCoords(), new Point2d(maxWidth, 0.0));
-        Rectangle rectangle2 = new Rectangle(halfStripeThickness, maxHeight);
-        rectangle2.rotate(rectangle2.getCoords(), Math.toRadians(-angleRotation));
-        rectangle2.translate(rectangle2.getCoords(), new Point2d(halfMaxWidth, 0.0));
+        Rectangle verticalRectangle = new Rectangle(halfStripeThickness, maxHeight);
+        Rectangle verticalRectangle2 = new Rectangle(halfStripeThickness, maxHeight);
+        verticalRectangle2.translate(verticalRectangle2.getCoords(), new Point2d(maxWidth, 0.0));
+        Rectangle diagonalRectangle = new Rectangle(halfStripeThickness, maxHeight);
+        diagonalRectangle.rotate(diagonalRectangle.getCoords(), Math.toRadians(-angleRotation));
+        diagonalRectangle.translate(diagonalRectangle.getCoords(), new Point2d(halfMaxWidth, 0.0));
         BaseShape N = new BaseShape();
-        return N.add(rectangle).add(rectangle2).add(rectangle1);
+        return N.add(verticalRectangle).add(diagonalRectangle).add(verticalRectangle2);
     }
 
 
