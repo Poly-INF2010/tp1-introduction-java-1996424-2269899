@@ -14,15 +14,16 @@ public class Rectangle extends BaseShape {
     public Rectangle(Double width, Double height) {
         super();
         Collection<Point2d> points = getCoords();
-        int numXPoints = (int) (width / 0.5);
-        int numYPoints = (int) (height / 0.5);
+        double pixelsSpacing = 0.5;
+        int numXPoints = (int) (width / pixelsSpacing);
+        int numYPoints = (int) (height / pixelsSpacing);
 
-        double firstX = -width / 2.0 + 0.5 / 2.0;
-        double firstY = -height / 2.0 + 0.5 / 2.0;
+        double firstX = -width / 2.0 + pixelsSpacing / 2.0;
+        double firstY = -height / 2.0 + pixelsSpacing / 2.0;
         for (int i = 0; i < numXPoints; i++) {
             for (int j = 0; j < numYPoints; j++) {
-                double x = firstX + i * 0.5;
-                double y = firstY + j * 0.5;
+                double x = firstX + i * pixelsSpacing;
+                double y = firstY + j * pixelsSpacing;
                 points.add(new Point2d(x, y));
             }
         }

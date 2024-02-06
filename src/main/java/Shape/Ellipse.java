@@ -16,9 +16,9 @@ public class Ellipse extends BaseShape {
         Collection<Point2d> points = getCoords();
         double a = widthDiameter / 2;
         double b = heightDiameter / 2;
-        double pixel = 0.5;
+        double pixelSpacing = 0.5;
         double perimetre = 2 * Math.PI * Math.sqrt((a * a + b * b) / 2);
-        int numPoints = (int) (perimetre / pixel);
+        int numPoints = (int) (perimetre / pixelSpacing);
         double dt = 2 * Math.PI / numPoints;
 
         for (double i = 0; i < 2 * Math.PI; i += dt) {
